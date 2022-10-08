@@ -10,19 +10,19 @@ const Login = () => {
   const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
 
   const submit = (data) => {
-    axios
-      .post(`${API_URL}/login`, data)
-      /* axios
+  /*  axios
+       .post(`${API_URL}/login`, data)*/
+      axios
     .post(
       `http://localhost:4000/api/v1/users/login`, data
-    )*/
+    )
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         navigate("/");
         alert("Bienvenido usuario");
       })
       .catch((error) => {
-        console.log(error.response.status);
+        console.log(error.response?.status);
         if (error.response.status === 404) {
           alert("Su Historia no existe en la base de datos");
         }
@@ -31,31 +31,22 @@ const Login = () => {
 
   return (
     <div>
-      <h3 className="main-title">
-        Bienvenido al portal de búsqueda de historias clinicas de Medicoop
-      </h3>
-      <p className="warning">
-        La historia clinica reciente, se encuentra en el aplicativo CIKLOS que
-        es propiedad de Coomeva EPS, para obtener una copia debe dirigirse a
-        Coomeva EPS liquidacion, sin embargo en nuestros archivos hay
-        documentacion de Historias Clinicas anterior al año 2006, si usted
-        necesita esa informacion la puede solicitar en esta pagina
-      </p>
+     
       <br />
       <div className="background-picture"></div>
       <h4 className="main-title">
-        Ingrese su Nombre y Cédula sin puntos ni comas.
+        Ingrese su correo y contraseña.
       </h4>
       <br />
       <Card style={{ maxWidth: "500px" }} className="mx-auto">
         <Card.Body className="card-body">
           <Form onSubmit={handleSubmit(submit)}>
             <Form.Group className="mb-3">
-              <Form.Label>Nombres y Apellidos</Form.Label>
+              <Form.Label>Correo Electronico</Form.Label>
               <Form.Control
-                {...register("name")}
-                type="name"
-                placeholder="Ingrese su Nombre"
+                {...register("email")}
+                type="email"
+                placeholder="Ingrese su correo"
               />
               <Form.Text className="text-muted">
                 Nunca compartiremos tu información personal.
@@ -63,13 +54,14 @@ const Login = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Cedula de Ciudadania</Form.Label>
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
-                {...register("email")}
+                {...register("password")}
                 type="password"
-                placeholder="Ingrese su correo sin puntos ni comas"
+                placeholder="Ingrese su contraseña"
               />
             </Form.Group>
+            <p className="mb-3">Usuario prueba: Jhon@gmail.com Contraseña: pass1234 </p>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Button variant="success" type="submit">
                 Ingresar
@@ -80,73 +72,11 @@ const Login = () => {
       </Card>
 
       <Row>
-        <Col>
-          <div className="main-text">
-            <article className="requirements">
-              <div className="steps">
-                <Container className="fluid">
-                  <Col>
-                    <div className="card-header">
-                      <Card.Header>
-                        <h2>¿Como solicitar mi Historia Clinica?</h2>
-                        <br />
-                      </Card.Header>
-                    </div>
-                    <Card className="numbers-container">
-                      <div className="numbers-container">
-                        <h1>1.</h1>
-                        <article>
-                          Ingresar en el portal con nombre y cedula del paciente
-                        </article>
-                      </div>
-                    </Card>
-                    <Card className="numbers-container">
-                      <div className="numbers-container">
-                        <h1>2.</h1>
-                        <article>
-                          Llenar formulario con los datos reales del paciente,
-                          recuerde que estos datos seran verificados al momento
-                          de enviar su historia.
-                        </article>
-                      </div>
-                    </Card>
-                  </Col>
-
-                  <Col>
-                    <Card>
-                      <div className="numbers-container">
-                        <h1>3.</h1>
-                        <article>
-                          Si no aparece en la base de datos, o hay algun error
-                          por favor comuniquese al
-                          correo electronico
-                          <a href="mailto:historiasclinicasmedicoop@gmail.com">
-                            {" "}
-                            historiasclinicasmedicoop@gmail.com
-                          </a>
-                        </article>
-                      </div>
-                    </Card>
-                    <Card>
-                      <div className="numbers-container">
-                        <h1>4.</h1>
-                        <article>
-                          Dar click en enviar solicitud, y nosotros procedermos
-                          a enviar la historia al correo que nos indica, de
-                          haber problemas con la verificacion nos pondremos en
-                          contacto con usted.
-                        </article>
-                      </div>
-                    </Card>
-                  </Col>
-                </Container>
-              </div>
-            </article>
-          </div>
-        </Col>
+       
+       
         <footer>
           <div className="footer">
-            © 2022 Copyright: Medicoop I.P.S. - All Rights Reserved
+            © 2022 Copyright: David Guerrero. - All Rights Reserved
           </div>
         </footer>
       </Row>

@@ -25,12 +25,6 @@ const getAllUsers = catchAsync(async (req, res, next) => {
 	// });
 
 	const users = await User.find({ status: 'active' }, '-password')
-		.populate({
-			path: 'posts',
-			match: { status: 'active' },
-			populate: { path: 'comments', match: { status: 'active' } },
-		})
-		.populate('comments');
 
 	res.status(200).json({
 		status: 'success',
@@ -88,9 +82,14 @@ const updateUser = catchAsync(async (req, res, next) => {
 });
 
 const deleteUser = catchAsync(async (req, res, next) => {
+
 	const { user } = req;
 
-	await user.update({ status: 'deleted' });
+	if(user.role === admin ){
+		await user.update({ status: 'deleted' });
+
+	}
+	
 
 	res.status(204).json({ status: 'success' });
 });

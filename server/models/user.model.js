@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: [true, 'Please enter your password'],
 		},
-		
+		role: {
+			type: String,
+			default: 'admin',
+		},
+
 		role: {
 			type: String,
 			default: 'visitor',
@@ -33,17 +37,6 @@ const userSchema = new mongoose.Schema(
 	}
 );
 
-userSchema.virtual('posts', {
-	ref: 'Post',
-	foreignField: 'userId',
-	localField: '_id',
-});
-
-userSchema.virtual('comments', {
-	ref: 'Comment',
-	foreignField: 'userId',
-	localField: '_id',
-});
 
 const User = mongoose.model('User', userSchema);
 
