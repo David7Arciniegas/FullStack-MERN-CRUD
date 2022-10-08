@@ -87,7 +87,6 @@ const deleteUser = catchAsync(async (req, res, next) => {
 
 	if(user.role === admin ){
 		await user.update({ status: 'deleted' });
-
 	}
 	
 

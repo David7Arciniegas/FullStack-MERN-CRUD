@@ -11,12 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 
-
-
-
-
-  
-
   const isLoading = useSelector(state => state.isLoading);
   
   return (
