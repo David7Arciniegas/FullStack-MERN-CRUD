@@ -6,10 +6,6 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: [true, 'Please provide a valid name'],
 		},
-		age: {
-			type: Number,
-			required: [true, 'Please enter your age'],
-		},
 		email: {
 			type: String,
 			required: [true, 'Please enter your email'],

@@ -39,7 +39,7 @@ const getAllUsers = catchAsync(async (req, res, next) => {
 });
 
 const createUser = catchAsync(async (req, res, next) => {
-	const { name, age, email, password } = req.body;
+	const { name, email, password } = req.body;
 
 	const userExists = await User.findOne({ email });
 
@@ -53,7 +53,6 @@ const createUser = catchAsync(async (req, res, next) => {
 
 	const newUser = await User.create({
 		name,
-		age,
 		email,
 		password: hashPassword,
 	});
