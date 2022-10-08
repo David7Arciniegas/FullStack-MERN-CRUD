@@ -21,6 +21,31 @@ const userSlice = createSlice({
 			state.isAuth = true;
 			state.user = action.payload.user;
 		},
+
+		getUserss(state, action) {
+			state.users = action.payload.users;
+		},
+		newUser(state, action) {
+			const { newUser } = action.payload;
+
+			state.posts = [newUser, ...state.user];
+		},
+		updateUser(state, action) {
+			const { id, title, content } = action.payload;
+
+			const postIndex = state.posts.findIndex(post => post.id === id);
+
+			const updatedPost = { ...state.posts[postIndex], title, content };
+
+			state.posts[postIndex] = updatedPost;
+		},
+		deletePost(state, action) {
+			const { id } = action.payload;
+
+			const postIndex = state.posts.findIndex(post => post.id === id);
+
+			state.posts.splice(postIndex, 1);
+		},
 	},
 });
 

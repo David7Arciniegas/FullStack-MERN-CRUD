@@ -8,9 +8,6 @@ const cors = require('cors')
 
 // Routers
 const { usersRouter } = require('./routes/users.routes');
-const { postsRouter } = require('./routes/posts.routes');
-const { commentsRouter } = require('./routes/comments.routes');
-const { viewsRouter } = require('./routes/views.routes');
 
 // Global err controller
 const { globalErrorHandler } = require('./controllers/error.controller');
@@ -23,10 +20,6 @@ const app = express();
 
 // Enable incoming JSON
 app.use(express.json());
-
-// Set template engine
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,10 +45,7 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 else app.use(morgan('combined'));
 
 // Define endpoints
-app.use('/', viewsRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/posts', postsRouter);
-app.use('/api/v1/comments', commentsRouter);
 
 // Handle incoming unknown routes to the server
 app.all('*', (req, res, next) => {

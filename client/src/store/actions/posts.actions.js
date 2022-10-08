@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-import { postsActions } from '../slices/posts.slice';
+import { usersActions } from '../slices/users.slice';
 import { errorActions } from '../slices/error.slice';
 
-const API_URL = `http://localhost:4000-api/v1/posts`;
+const API_URL = `http://localhost:4000/api/v1/users`;
 
-export const getPosts = () => {
+export const getusers = () => {
 	return async dispatch => {
 		try {
 			// API REQUEST
@@ -15,7 +15,7 @@ export const getPosts = () => {
 				headers: { authorization: `Bearer ${token}` },
 			});
 
-			const { posts } = res.data;
+			const { users } = res.data;
 
 			dispatch(postsActions.getPosts({ posts }));
 		} catch (error) {

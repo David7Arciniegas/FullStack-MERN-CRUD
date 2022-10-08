@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { checkToken } from '../../store/actions/user.actions';
 
 // Components
-import PostsList from '../../components/posts/posts-list/post-list.component';
+import PostsList from '../../components/posts/users-list/users-list.component';
 import AddPostForm from '../../components/forms/add-post-form/add-post-form.component';
 
 import classes from './home.module.css';

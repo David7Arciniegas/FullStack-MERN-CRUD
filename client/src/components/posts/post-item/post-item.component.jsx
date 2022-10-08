@@ -55,7 +55,7 @@ const PostItem = ({ post }) => {
 					color: '#114070',
 					fontWeight: 'bold',
 				}}
-				title={post.user.name}
+				title={post.user?.name}
 				extra={formattedDate}
 				hoverable
 				className={classes.card}

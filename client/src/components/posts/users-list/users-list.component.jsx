@@ -3,28 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'antd';
 
 // Redux actions
-import { getPosts } from '../../../store/actions/posts.actions';
+import { getUsers } from '../../../store/actions/users.actions';
 
 // Components
-import PostItem from '../post-item/post-item.component';
+import UserItem from '../user-item/user-item.component';
 
-import classes from './post-list.module.css';
+import classes from './user-list.module.css';
 
-const PostsList = () => {
-	const posts = useSelector(state => state.posts.posts);
+const UsersList = () => {
+	const users = useSelector(state => state.users.users);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getPosts());
+		dispatch(getUsers());
 	}, [dispatch]);
 
 	return (
 		<div className={classes['post-list-container']}>
 			<Row gutter={{ lg: 100 }} justify='space-around'>
 				{posts &&
-					posts.map(post => (
-						<Col key={post.id} span={24}>
-							<PostItem post={post} />
+					posts.map(user => (
+						<Col key={user.id} span={24}>
+							<UserItem user={user} />
 						</Col>
 					))}
 			</Row>
@@ -32,4 +32,4 @@ const PostsList = () => {
 	);
 };
 
-export default PostsList;
+export default UsersList;

@@ -2,36 +2,36 @@ import { useDispatch } from 'react-redux';
 import { Form, Input, message } from 'antd';
 
 // Redux actions
-import { submitPost } from '../../../store/actions/posts.actions';
+import { submitUser } from '../../../store/actions/users.actions';
 
 // Components
 import Button from '../../ui/button/button.component';
 
 import classes from './add-post-form.module.css';
 
-const AddPostForm = () => {
+const AddUserForm = () => {
 	const dispatch = useDispatch();
 	const [form] = Form.useForm();
 
 	const submitHandler = e => {
-		if (!e.title || !e.content) {
-			return message.error('Enter a valid title and content', 1.5);
+		if (!e.email || !e.password) {
+			return message.error('Enter a valid email and password', 1.5);
 		}
 
-		dispatch(submitPost(e.title, e.content));
+		dispatch(submitUser(e.email, e.password));
 
 		form.resetFields();
 	};
 
 	return (
 		<div className={classes['form-container']}>
-			<h2>Create a new post now!</h2>
+			<h2>Create a new user now!</h2>
 			<Form
 				form={form}
 				labelCol={{ span: 0 }}
 				wrapperCol={{ span: 24 }}
 				layout='vertical'
-				name='newPost'
+				name='newUser'
 				size='middle'
 				onFinish={submitHandler}
 			>

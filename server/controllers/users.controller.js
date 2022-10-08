@@ -11,7 +11,6 @@ const { User } = require('../models/user.model');
 // Utils
 const { catchAsync } = require('../utils/catchAsync.util');
 const { AppError } = require('../utils/appError.util');
-const { Email } = require('../utils/email.util');
 
 // Gen secrets for JWT, require('crypto').randomBytes(64).toString('hex')
 
@@ -130,6 +129,15 @@ const login = catchAsync(async (req, res, next) => {
 	});
 });
 
+const checkToken = catchAsync(async (req, res, next) => {
+	const { sessionUser } = req;
+
+	res.status(200).json({
+		status: 'success',
+		user: sessionUser,
+	});
+});
+
 module.exports = {
 	getAllUsers,
 	createUser,
@@ -137,4 +145,5 @@ module.exports = {
 	updateUser,
 	deleteUser,
 	login,
+	checkToken
 };
