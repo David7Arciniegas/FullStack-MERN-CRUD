@@ -42,6 +42,7 @@ const createUser = catchAsync(async (req, res, next) => {
 		return next(new AppError('Email already taken', 400));
 	}
 	
+//how to make a form responsive?
 
 	// Hash password
 	const salt = await bcrypt.genSalt(12);
@@ -79,13 +80,19 @@ const getUserById = catchAsync(async (req, res, next) => {
 });
 
 const updateUser = catchAsync(async (req, res, next) => {
-	const { user } = req;
-	const { name } = req.body;
+	const { sessionUser, user } = req;
+	const { name, email, address, phoneNumber, password, role } = req.body;
 
-	await user.update({ name });
-
-	res.status(204).json({ status: 'success' });
+	if(sessionUser.role === "admin" && (sessionUser.id != user.id)){
+		await user.update({ name, email, address, phoneNumber, password, role });
+	
+   res.status(204).json({ status: 'success' }); 
+}
+else{ return next(new AppError('Unauthorized', 403)); }
 });
+
+
+
 
 const deleteUser = catchAsync(async (req, res, next) => {
 

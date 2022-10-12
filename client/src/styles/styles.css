@@ -174,6 +174,10 @@ ul {
   .title-box {
     padding-top: 10rem;
   }
+  .form-container{
+    width: 3rem;
+
+  }
 }
 
 @media (max-width: 600px) {
@@ -181,6 +185,8 @@ ul {
 
     padding-top: 7rem;
   }
+
+
 }
 
 @media (max-width: 480px) {
@@ -262,10 +268,12 @@ ul {
 }
 
 .form-container{
+  
+ 
   border-radius: 10px;
   box-shadow: 2px 2px 12px 2px #123952;
   background-color: #ECF0F1;
-  width: 30%;
+  width: 25%;
   text-align: center;
   display: inline-block;
   justify-content: center;
@@ -274,9 +282,9 @@ ul {
 }
 
 .input-form{
-  width: 2rem;
+  width: 10%;
+  text-align: center;
 }
-
 
 .form-body {
   text-align: left;

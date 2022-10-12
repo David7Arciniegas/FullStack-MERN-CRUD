@@ -59,6 +59,8 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
       <div className="input-form">
         <label htmlFor="name">Name</label>
         <input
+        style ={{width: '17vw'}}
+        className="input-f"
           type="text"
           id="name"
           onChange={(e) => setName(e.target.value)}
@@ -71,6 +73,7 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
         <label htmlFor="email">Email</label>
         <br />
         <input
+         style ={{width: '17vw'}}
           type="email"
           id="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -82,6 +85,7 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
         <label htmlFor="address">Address</label>
         <br />
         <input
+         style ={{width: '17vw'}}
           type="address"
           id="address"
           onChange={(e) => setAddress(e.target.value)}
@@ -89,9 +93,11 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
         />
       </div>
       <div className="input-form">
+        
         <label htmlFor="phoneNumber">Phone Number</label>
         <br />
         <input
+         style ={{width: '17vw'}}
           type="phoneNumber"
           id="phoneNumber"
           onChange={(e) => setPhoneNumber(e.target.value)}
@@ -102,17 +108,17 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
       <div className="input-form">
         <label htmlFor="password">Password</label>
         <input
+         style ={{width: '17vw'}}
           type="password"
           id="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
       </div>
-
-      
       <div className="input-form">
         <label htmlFor="password">Role</label>
         <input
+         style ={{width: '17vw'}}
           type="role"
           id="role"
           onChange={(e) => setRole(e.target.value)}

@@ -46,8 +46,8 @@ function Form() {
 
   const editUser = (userEdited) => {
     axios
-      .put(
-        `http://localhost:4000/api/v1/users/${userSelected.id}/`,
+      .patch(
+        `http://localhost:4000/api/v1/users/${userSelected.id}/`, getConfig(),
         userEdited
       )
       .then(() => getUsers());
@@ -66,7 +66,7 @@ function Form() {
         unselectUser={unselectUser}
         editUser={editUser}
       />
-      <h2 className="users-list">Users List</h2>
+      <h2 className="">Users List</h2>
       <UsersList user={user} removeUser={removeUser} selectUser={selectUser} />
     </div>
   );

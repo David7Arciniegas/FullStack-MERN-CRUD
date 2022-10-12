@@ -38,7 +38,7 @@ usersRouter
 	.use('/:id', userExists)
 	.route('/:id')
 	.get(getUserById)
-	.patch( protectUserAccount, updateUser)
+	.patch(updateUser)
 	.delete( deleteUser);
 
 module.exports = { usersRouter };
