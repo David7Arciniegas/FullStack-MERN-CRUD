@@ -4,33 +4,35 @@ import { BsPencilFill } from 'react-icons/bs';
 
 const UsersList = ({ user, removeUser, selectUser }) => {
   return (
-    <ul className="users-list">
+
+    
+    <ul>
       {user.map((user) => (
         <li className="li" key={user.id}>
           
-          <div className="card">
+          <div className="users-card">
 
-          <h2 className="cardname">
-            <b> </b> {user.first_name}
-           
-            <hr />
-            <br />
+          <h2 className="card-name">
+           {user.name}
           </h2>
-          <p>
-            <b>Lastname: </b> {user.last_name}
-          </p>
           <p>
             <b>Email: </b> {user.email}
           </p>
           <p>
-            <b>Birthday: </b> {user.birthday}
+            <b>Address: </b> {user.address}
           </p>
           <p>
-            <b>Password: </b> {user.password}
+            <b>Phone Number: </b> {user.phoneNumber}
+          </p>
+          <p>
+            <b>Role: </b> {user.role}
           </p>
           <br />
+
+        <div className="btns">
           <button onClick={() => removeUser(user.id)} className="delete"> < FaRegTrashAlt /></button>
           <button onClick={() => selectUser(user)} className="edit"><BsPencilFill /></button>
+          </div>
           </div>
         </li>
       ))}

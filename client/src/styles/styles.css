@@ -6,7 +6,7 @@
 }
 
 .container {
-  background-color: #123952;
+  background-color: #122e52;
   border-radius: 5px;
   box-shadow: 2px 2px 12px 2px #123952;
   flex-direction: row;
@@ -33,30 +33,33 @@ ul {
 
 .logo {
   margin-top: 1rem;
-  width: 40vw;
+  width: 15vw;
   margin-right: 1rem;
 }
 
 .ingresar {
   margin-top: 1rem;
   padding: 0.2rem;
-  color: #205320;
+  color: #2c3c72;
   text-decoration: none;
   margin-top: 1rem;
   border-style: solid;
   border-color: transparent;
-  box-shadow: 1px 1px 1px;
+  box-shadow: 1px 1px 1px ;
   font-size: 1.5rem;
 }
 
 .ingresar:hover {
-  color: #205320;
+  color: #48588b;
   box-shadow: 2px 2px 2px 1px;
 }
 
+.in{
+  color: #0e364e;
+}
 .salir {
   padding: 0.2rem;
-  color: #205320;
+  color: #2c3c72;
   text-decoration: none;
   margin-top: 1rem;
   border-style: solid;
@@ -65,9 +68,13 @@ ul {
   font-size: 1.5rem;
 }
 
+.users-list{
+  padding-top: 2rem;
+}
+
 .salir:hover {
-  color: #205320;
-  box-shadow: 2px 2px 2px 1px;
+  color:  #48588b;
+  box-shadow: 2px 2px 2px 2px;
 }
 
 .items {
@@ -86,8 +93,12 @@ ul {
   padding: 1rem;
 }
 
+.mb-2{
+  padding-left: 1rem;
+}
+
 .background-picture {
-  background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/family-portrait_NUYDLQW0FS.jpg");
+  background-image: url("https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg?w=1060&t=st=1665578129~exp=1665578729~hmac=471a388733a978a145df2c1e9fbc4339c077317c95e681d7428a4fd2e62cd9c8");
   height: 27vw;
   width: 100%;
   flex-wrap: wrap;
@@ -202,14 +213,70 @@ ul {
   }
 }
 
-.form {
-  background-color: white;
-  border-radius: 5px;
-  width: 550px;
-  margin: 23rem auto;
-  padding: 20px;
-  text-align: center;
+.form{
+  padding-top: 3rem;
 }
+
+.addButton{
+  background-color:antiquewhite;
+  margin: 1rem;
+  padding: 10px;
+}
+
+.users-card{
+  padding: 1rem;
+  background-color: #ECF0F1;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px 2px #123952;
+}
+
+ .card-name{
+  color: #3c5e9e;
+  
+}
+
+.users-list{
+  color: #F7F9F9 ;
+}
+
+.btns{
+  display: inline-block;
+}
+
+.delete{
+  height: 2rem;
+  background-color: #E74C3C ;
+  width: 4rem;
+}
+.edit{
+  height: 2rem;
+  width: 4rem;
+  background-color: #A9DFBF;
+
+}
+
+
+
+.addButton:hover{
+  background-color: #3c5e9e;
+}
+
+.form-container{
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px 2px #123952;
+  background-color: #ECF0F1;
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  justify-content: center;
+  padding: 1rem;
+
+}
+
+.input-form{
+  width: 2rem;
+}
+
 
 .form-body {
   text-align: left;
@@ -228,10 +295,12 @@ ul {
   width: 60%;
 }
 
+
+
+
 .formDiv {
   display: flex;
   justify-content: center;
-
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -241,7 +310,7 @@ ul {
 .main-title {
   text-align: center;
   padding-top: 2rem;
-  color: #00c6aa;
+  color: #c9d1d0;
 }
 
 .upload-feature {
@@ -249,8 +318,8 @@ ul {
 }
 
 .submitBtn {
-  background-color: #5cb85c;
-  border-color: #5cb85c;
+  background-color: #3c5e9e;
+  border-color: #3c5e9e;
   border-radius: 5px;
   width: 12rem;
   height: 3rem;
@@ -259,7 +328,7 @@ ul {
 }
 
 .submit {
-  background-color: #3c9e3c;
+  background-color: #3c5e9e;
   width: 8rem;
   height: 2.5rem;
   border-radius: 5px;

@@ -23,7 +23,6 @@ const getAllUsers = catchAsync(async (req, res, next) => {
 	// 		{ model: Comment },
 	// 	],
 	// });
-
 	const users = await User.find({ status: 'active' }, '-password')
 
 	res.status(200).json({
@@ -33,22 +32,29 @@ const getAllUsers = catchAsync(async (req, res, next) => {
 });
 
 const createUser = catchAsync(async (req, res, next) => {
-	const { name, email, password } = req.body;
+	const { sessionUser, user } = req;
+	const { name, email, password, role, address, phoneNumber} = req.body;
+
 
 	const userExists = await User.findOne({ email });
 
 	if (userExists) {
 		return next(new AppError('Email already taken', 400));
 	}
+	
 
 	// Hash password
 	const salt = await bcrypt.genSalt(12);
 	const hashPassword = await bcrypt.hash(password, salt);
-
+	
+	if(sessionUser.role === 'admin'){
 	const newUser = await User.create({
 		name,
 		email,
 		password: hashPassword,
+		role,
+		address,
+		phoneNumber
 	});
 
 	// Remove password from response
@@ -61,7 +67,7 @@ const createUser = catchAsync(async (req, res, next) => {
 		status: 'success',
 		newUser,
 	});
-});
+}});
 
 const getUserById = catchAsync(async (req, res, next) => {
 	const { user } = req;
@@ -83,14 +89,17 @@ const updateUser = catchAsync(async (req, res, next) => {
 
 const deleteUser = catchAsync(async (req, res, next) => {
 
-	const { user } = req;
+	const { user, sessionUser } = req;
 
-	if(user.role === admin ){
+	if(sessionUser.role === "admin" && (sessionUser.id != user.id)){
 		await user.update({ status: 'deleted' });
-	}
 	
+   res.status(204).json({ status: 'success' }); 
+}
+else{ return next(new AppError('Unauthorized', 403)); }
+   
 
-	res.status(204).json({ status: 'success' });
+   
 });
 
 const login = catchAsync(async (req, res, next) => {

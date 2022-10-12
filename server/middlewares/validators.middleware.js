@@ -19,13 +19,16 @@ const checkResult = (req, res, next) => {
 
 const createUserValidators = [
 	body('name').notEmpty().withMessage('Name cannot be empty'),
-	body('age').isNumeric().withMessage('Age must be a number'),
 	body('email').isEmail().withMessage('Must provide a valid email'),
 	body('password')
 		.isLength({ min: 8 })
 		.withMessage('Password must be at least 8 characters long')
 		.isAlphanumeric()
 		.withMessage('Password must contain letters and numbers'),
+		body('address').notEmpty().withMessage('Adress cannot be empty'),
+		body('phoneNumber').notEmpty().withMessage('Phone number cannot be empty'),
+	body('role').notEmpty().withMessage('Role cannot be empty'),
+
 	checkResult,
 ];
 

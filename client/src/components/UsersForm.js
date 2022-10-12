@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
-  const [first_name, setFirst_name] = useState("");
-  const [last_name, setLast_name] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     if (userSelected !== null) {
-      setFirst_name(userSelected.first_name);
-      setLast_name(userSelected.last_name);
+      setName(userSelected.name);
       setEmail(userSelected.email);
-      setBirthday(userSelected.birthday);
+      setAddress(userSelected.address);
+      setPhoneNumber(userSelected.phoneNumber);
       setPassword(userSelected.password);
+      setRole(userSelected.role);
     } else {
       reset();
     }
@@ -22,11 +24,12 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
   const submit = (e) => {
     e.preventDefault();
     const user = {
-      first_name: first_name,
-      last_name: last_name,
+      name: name,
       email: email,
-      birthday: birthday,
+      address: address,
+      phoneNumber: phoneNumber,
       password: password,
+      role: role
     };
     if (userSelected === null) {
       addUser(user);
@@ -38,40 +41,33 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
   };
 
   const reset = () => {
-    setFirst_name("");
-    setLast_name("");
+    setName("");
     setEmail("");
-    setBirthday("");
+    setAddress("");
+    setPhoneNumber("");
     setPassword("");
+    setRole("");
   };
 
   return (
-
+<>
+<div className="form" >
    
-    <form onSubmit={submit} className="users-form">
-      <div className="input-container">
-        <label htmlFor="first_name">Name</label>
+    <form onSubmit={submit}>
+
+    <div className="form-container">
+      <div className="input-form">
+        <label htmlFor="name">Name</label>
         <input
           type="text"
-          id="first_name"
-          onChange={(e) => setFirst_name(e.target.value)}
-          value={first_name}
+          id="name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
       </div>
 
-      
-        <div className="input-container">
-          <label htmlFor="last_name">Lastname</label>
-          <input
-            type="text"
-            id="last_name"
-            onChange={(e) => setLast_name(e.target.value)}
-            value={last_name}
-          />
-        
-      </div>
-
-      <div className="input-container">
+  
+      <div className="input-form">
         <label htmlFor="email">Email</label>
         <br />
         <input
@@ -82,7 +78,28 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
         />
       </div>
 
-      <div className="input-container">
+      <div className="input-form">
+        <label htmlFor="address">Address</label>
+        <br />
+        <input
+          type="address"
+          id="address"
+          onChange={(e) => setAddress(e.target.value)}
+          value={address}
+        />
+      </div>
+      <div className="input-form">
+        <label htmlFor="phoneNumber">Phone Number</label>
+        <br />
+        <input
+          type="phoneNumber"
+          id="phoneNumber"
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={phoneNumber}
+        />
+      </div>
+
+      <div className="input-form">
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -92,23 +109,26 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
         />
       </div>
 
-      <div className="input-container">
-        <label htmlFor="birthday">Birthday</label>
-        <br />
+      
+      <div className="input-form">
+        <label htmlFor="password">Role</label>
         <input
-          type="date"
-          id="birthday"
-          onChange={(e) => setBirthday(e.target.value)}
-          value={birthday}
+          type="role"
+          id="role"
+          onChange={(e) => setRole(e.target.value)}
+          value={role}
         />
       </div>
-
-      <button className="add">+ Add User</button>
+      </div>
+      <div>
+      <button className="addButton">Add User</button>
       {userSelected !== null && (<button type="button" className="cancel" onClick={unselectUser}>Cancelar</button>)}
-     
-     
-      
+     </div>
     </form>
+    </div>
+    </>
+
+
   );
 };
 

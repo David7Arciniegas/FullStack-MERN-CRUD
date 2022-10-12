@@ -20,13 +20,14 @@ function Form() {
 
   const getUsers = () => {
     axios
-      .get("http://localhost:4000/api/v1/users/", )
-      .then((res) => setUsers(res.data));
+      .get("http://localhost:4000/api/v1/users/",  getConfig() )
+      .then((res) => setUsers(res.data.users));
+      console.log(getUsers);
   };
 
   const addUser = (userItem) => {
     axios
-      .post("http://localhost:4000/api/v1//users/", userItem,)
+      .post("http://localhost:4000/api/v1/users/", userItem, getConfig())
       .then(() => getUsers())
       .catch((error) => console.log(error.response));
   };
@@ -65,6 +66,7 @@ function Form() {
         unselectUser={unselectUser}
         editUser={editUser}
       />
+      <h2 className="users-list">Users List</h2>
       <UsersList user={user} removeUser={removeUser} selectUser={selectUser} />
     </div>
   );

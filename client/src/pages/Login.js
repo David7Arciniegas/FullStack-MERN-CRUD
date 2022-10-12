@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { Button, Card, Form, Row, Col, Container } from "react-bootstrap";
+import { Button, Card, Form, Row,} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -61,9 +61,10 @@ const Login = () => {
                 placeholder="Ingrese su contraseña"
               />
             </Form.Group>
-            <p className="mb-3">Usuario prueba: Jhon@gmail.com Contraseña: pass1234 </p>
+            <p className="mb-2">Usuario Administrador: admin@mail.com </p>
+            <p className="mb-2"> Contraseña: pass1234 </p>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Button variant="success" type="submit">
+              <Button  type="submit">
                 Ingresar
               </Button>
             </Form.Group>

@@ -58,4 +58,12 @@ const protectUserAccount = (req, res, next) => {
 	next();
 };
 
-module.exports = { protectSession, protectUserAccount };
+const adminUserAccount = (req, res, next) => {
+	//Allows actions if user is Admin
+	const { sessionUser } = req;
+
+	if(sessionUser.role != "admin"){
+		return next(new AppError('You are not an Admin', 403));
+	}
+}
+module.exports = { protectSession, protectUserAccount, adminUserAccount };

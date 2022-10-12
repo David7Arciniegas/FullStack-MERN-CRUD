@@ -19,18 +19,18 @@ const { userExists } = require('../middlewares/users.middleware');
 const {
 	protectSession,
 	protectUserAccount,
+	adminUserAccount
 } = require('../middlewares/auth.middleware');
 
 const usersRouter = express.Router();
-
-usersRouter.post('/', createUserValidators, createUser);
 
 usersRouter.post('/login', login);
 
 usersRouter.use(protectSession);
 
-usersRouter.get('/', getAllUsers);
+usersRouter.post('/', createUserValidators, createUser);
 
+usersRouter.get('/', getAllUsers);
 
 usersRouter.get('/check-token', checkToken);
 
@@ -38,7 +38,7 @@ usersRouter
 	.use('/:id', userExists)
 	.route('/:id')
 	.get(getUserById)
-	.patch(protectUserAccount, updateUser)
-	.delete(protectUserAccount, deleteUser);
+	.patch( protectUserAccount, updateUser)
+	.delete( deleteUser);
 
 module.exports = { usersRouter };

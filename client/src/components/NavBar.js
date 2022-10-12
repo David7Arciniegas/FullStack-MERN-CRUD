@@ -1,5 +1,5 @@
 import '../styles/styles.css';
-import Image from '../assets/logo Medicoop.png';
+import Image from '../assets/1.png';
 
 
 
@@ -16,11 +16,11 @@ const LoadingScreen = () => {
         </li>
         <li>
           <a className="ingresar" href="/#/login">
-            Ingresar
+            Login
           </a>
         </li>
         <li>
-          <a className="salir" role="button"  onClick={logout} href="/#/">Salir</a>
+          <a className="salir" role="button"  onClick={logout} href="/#/">Logout</a>
         </li>
       </ul>
     </div>

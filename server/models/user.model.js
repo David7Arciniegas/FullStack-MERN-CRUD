@@ -11,6 +11,14 @@ const userSchema = new mongoose.Schema(
 			required: [true, 'Please enter your email'],
 			unique: true,
 		},
+		address: {
+			type: mongoose.Schema.Types.Mixed,
+			required: [true, 'Please provide a valid address'],
+		},
+		phoneNumber: {
+			type: Number,
+			required: [true, 'Please provide a valid phone number'],
+		},
 		password: {
 			type: String,
 			required: [true, 'Please enter your password'],
@@ -18,11 +26,6 @@ const userSchema = new mongoose.Schema(
 		role: {
 			type: String,
 			default: 'admin',
-		},
-
-		role: {
-			type: String,
-			default: 'visitor',
 		},
 
 		status: {

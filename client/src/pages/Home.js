@@ -9,10 +9,9 @@ function Home() {
 
   //Makes API Call for Users List 
   return (
-    <div>
+    <div>    
       <Form />
   
-
       <footer>
         <div className="footer">
           © 2022 Copyright: David Guerrero. - All Rights Reserved
