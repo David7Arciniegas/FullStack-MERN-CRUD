@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 // import Modal from "./components/Modal";
+import AdminPage from "../pages/AdminPage";
 import UsersForm from "../components/UsersForm";
 import UsersList from "../components/UsersList";
 import "../styles/styles.css";
@@ -10,30 +11,33 @@ function Form() {
   const [user, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState(null);
 
-  const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
+  //  const API_URL = `${localhost:3000}api/v1/users`;
+
+  //process.env.REACT_APP_API_URL
 
   useEffect(() => {
     axios
-      .get(`${API_URL}`, getConfig())
+      .get(`http://localhost:4000/api/v1/users/`, getConfig())
       .then((res) => setUsers(res.data.users));
   }, []);
 
   const getUsers = () => {
     axios
-      .get(`${API_URL}`, getConfig())
+      .get(`http://localhost:4000/api/v1/users/`, getConfig())
       .then((res) => setUsers(res.data.users));
-    console.log(getUsers);
   };
 
   const addUser = (userItem) => {
     axios
-      .post(`${API_URL}`, userItem, getConfig())
+      .post(`http://localhost:4000/api/v1/users/`, userItem, getConfig())
       .then(() => getUsers())
       .catch((error) => console.log(error.response));
   };
 
   const removeUser = (id) => {
-    axios.delete(`${API_URL}`, getConfig()).then(() => getUsers());
+    axios
+      .delete(`http://localhost:4000/api/v1/users/`, getConfig())
+      .then(() => getUsers());
   };
 
   const selectUser = (user) => {
@@ -45,9 +49,9 @@ function Form() {
   const editUser = (userEdited) => {
     axios
       .patch(
-        `${API_URL}${userSelected.id}/`,
-        getConfig(),
-        userEdited
+        `http://localhost:4000/api/v1/users/${userSelected.id}/`,
+        userEdited,
+        getConfig()
       )
       .then(() => getUsers());
   };

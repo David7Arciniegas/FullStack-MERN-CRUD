@@ -54,7 +54,6 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
 <div className="form" >
    
     <form onSubmit={submit}>
-
     <div className="form-container">
       <div className="input-form">
         <label htmlFor="name">Name</label>
@@ -67,8 +66,6 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
           value={name}
         />
       </div>
-
-  
       <div className="input-form">
         <label htmlFor="email">Email</label>
         <br />

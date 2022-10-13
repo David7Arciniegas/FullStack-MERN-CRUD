@@ -20,7 +20,7 @@ const LoadingScreen = () => {
           </a>
         </li>
         <li>
-          <a className="salir" role="button"  onClick={logout} href="/#/">Logout</a>
+          <a className="salir" role="button"  onClick={logout} href="/#/login">Logout</a>
         </li>
       </ul>
     </div>

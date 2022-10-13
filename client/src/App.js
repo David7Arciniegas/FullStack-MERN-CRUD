@@ -1,8 +1,7 @@
-import { Home, Login} from './pages';
+import { AdminPage, Login, VisitorPage} from './pages';
 import './App.css';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-
 import { useSelector } from 'react-redux';
 import { NavBar } from './components';
 import ProtectedRoutes from './components/ProtectedRoutes';
@@ -20,14 +19,11 @@ function App() {
       <Container>
         { isLoading && <Spinner color="success"/>}
         <Routes>
-
           <Route path='/login' element={<Login />} />
-
           <Route element={<ProtectedRoutes />}>
-          <Route path='/' element={<Home/>} />
-        
-           
-          </Route>
+          <Route path='/admin' element={<AdminPage/>} />
+          <Route path='/visitor' element={<VisitorPage/>} />
+        </Route>
 
         </Routes>
        </Container>

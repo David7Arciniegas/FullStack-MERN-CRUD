@@ -4,8 +4,6 @@ import { BsPencilFill } from 'react-icons/bs';
 
 const UsersList = ({ user, removeUser, selectUser }) => {
   return (
-
-    
     <ul>
       {user.map((user) => (
         <li className="li" key={user.id}>

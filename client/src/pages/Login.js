@@ -10,21 +10,30 @@ const Login = () => {
   const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
 
   const submit = (data) => {
-    axios
-       .post(`${API_URL}/login`, data)
      /* axios
+     .post(`${API_URL}/login`, data)*/
+      axios
     .post(
       `http://localhost:4000/api/v1/users/login`, data
-    )*/
+    )
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        navigate("/");
-        alert("Bienvenido usuario");
-      })
+        localStorage.setItem("role", res.data.user.role);
+        if(res.data.user.role === "admin"){
+          navigate("/admin");
+          alert("Bienvenido admin");
+          console.log(data.user.role)
+        }else{
+          if(res.data.user.role === "visitor"){
+            navigate("/visitor");
+            alert("Bienvenido Visitante");
+           
+        }
+      }})
       .catch((error) => {
         console.log(error.response?.status);
-        if (error.response.status === 404) {
-          alert("Su Historia no existe en la base de datos");
+        if (error.response?.status === 404) {
+          alert("error");
         }
       });
   };

@@ -17,12 +17,6 @@ const { AppError } = require('../utils/appError.util');
 dotenv.config({ path: './config.env' });
 
 const getAllUsers = catchAsync(async (req, res, next) => {
-	// const users = await User.findAll({
-	// 	include: [
-	// 		{ model: Post, include: { model: Comment, include: User } },
-	// 		{ model: Comment },
-	// 	],
-	// });
 	const users = await User.find({ status: 'active' }, '-password')
 
 	res.status(200).json({
@@ -71,11 +65,12 @@ const createUser = catchAsync(async (req, res, next) => {
 }});
 
 const getUserById = catchAsync(async (req, res, next) => {
-	const { user } = req;
+	const { user, sessionUser } = req;
 
 	res.status(200).json({
 		status: 'success',
 		user,
+		sessionUser
 	});
 });
 
