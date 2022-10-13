@@ -14,26 +14,26 @@ function Form() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}api/v1/users/`, getConfig())
+      .get(`${API_URL}`, getConfig())
       .then((res) => setUsers(res.data.users));
   }, []);
 
   const getUsers = () => {
     axios
-      .get(`${API_URL}api/v1/users/`, getConfig())
+      .get(`${API_URL}`, getConfig())
       .then((res) => setUsers(res.data.users));
     console.log(getUsers);
   };
 
   const addUser = (userItem) => {
     axios
-      .post(`${API_URL}api/v1/users/`, userItem, getConfig())
+      .post(`${API_URL}`, userItem, getConfig())
       .then(() => getUsers())
       .catch((error) => console.log(error.response));
   };
 
   const removeUser = (id) => {
-    axios.delete(`${API_URL}api/v1/users/`, getConfig()).then(() => getUsers());
+    axios.delete(`${API_URL}`, getConfig()).then(() => getUsers());
   };
 
   const selectUser = (user) => {
@@ -45,7 +45,7 @@ function Form() {
   const editUser = (userEdited) => {
     axios
       .patch(
-        `${API_URL}api/v1/users/${userSelected.id}/`,
+        `${API_URL}${userSelected.id}/`,
         getConfig(),
         userEdited
       )
