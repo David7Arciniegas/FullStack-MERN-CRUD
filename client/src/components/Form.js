@@ -7,7 +7,6 @@ import "../styles/styles.css";
 import getConfig from "../utils/getConfig";
 
 function Form() {
-
   const [user, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState(null);
 
@@ -15,29 +14,26 @@ function Form() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/v1/users/`, getConfig())
+      .get(`${API_URL}v1/users/`, getConfig())
       .then((res) => setUsers(res.data.users));
- 
   }, []);
 
   const getUsers = () => {
     axios
-      .get(`${API_URL}/v1/users/`,  getConfig() )
+      .get(`${API_URL}v1/users/`, getConfig())
       .then((res) => setUsers(res.data.users));
-      console.log(getUsers);
+    console.log(getUsers);
   };
 
   const addUser = (userItem) => {
     axios
-      .post(`${API_URL}/v1/users/`, userItem, getConfig())
+      .post(`${API_URL}v1/users/`, userItem, getConfig())
       .then(() => getUsers())
       .catch((error) => console.log(error.response));
   };
 
   const removeUser = (id) => {
-    axios
-      .delete(`${API_URL}/v1/users/`, getConfig() )
-      .then(() => getUsers());
+    axios.delete(`${API_URL}v1/users/`, getConfig()).then(() => getUsers());
   };
 
   const selectUser = (user) => {
@@ -49,7 +45,8 @@ function Form() {
   const editUser = (userEdited) => {
     axios
       .patch(
-        `${API_URL}/request/v1/users/${userSelected.id}/`, getConfig(),
+        `${API_URL}request/v1/users/${userSelected.id}/`,
+        getConfig(),
         userEdited
       )
       .then(() => getUsers());
