@@ -10,12 +10,12 @@ const Login = () => {
   const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
 
   const submit = (data) => {
-  /*  axios
-       .post(`${API_URL}/login`, data)*/
-      axios
+    axios
+       .post(`${API_URL}/login`, data)
+     /* axios
     .post(
       `http://localhost:4000/api/v1/users/login`, data
-    )
+    )*/
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         navigate("/");
