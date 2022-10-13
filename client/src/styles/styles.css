@@ -12,6 +12,13 @@
   flex-direction: row;
 }
 
+.landing-page{
+  
+  padding-top: 2rem;
+  text-align: center;
+  
+}
+
 .navbar-container {
   display: flex;
   flex-direction: row;

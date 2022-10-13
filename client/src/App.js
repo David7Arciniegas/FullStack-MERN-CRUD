@@ -1,4 +1,4 @@
-import { AdminPage, Login, VisitorPage} from './pages';
+import { AdminPage, Login, VisitorPage, LandingPage} from './pages';
 import './App.css';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
@@ -19,6 +19,7 @@ function App() {
       <Container>
         { isLoading && <Spinner color="success"/>}
         <Routes>
+        <Route path='/' element={<LandingPage />} />
           <Route path='/login' element={<Login />} />
           <Route element={<ProtectedRoutes />}>
           <Route path='/admin' element={<AdminPage/>} />
