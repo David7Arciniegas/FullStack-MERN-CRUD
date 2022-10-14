@@ -46,8 +46,9 @@ const Login = () => {
         <Card.Body className="card-body">
           <Form onSubmit={handleSubmit(submit)}>
             <Form.Group className="mb-3">
-              <Form.Label>Correo Electronico</Form.Label>
+              <Form.Label className="correo">Correo Electronico</Form.Label>
               <Form.Control
+                className="input-correo"
                 {...register("email")}
                 type="email"
                 placeholder="Ingrese su correo"
@@ -65,10 +66,12 @@ const Login = () => {
                 placeholder="Ingrese su contraseña"
               />
             </Form.Group>
+            <div className="card">
             <p className="mb-2">Usuario Administrador: admin@mail.com </p>
             <p className="mb-2"> Contraseña: pass1234 </p>
             <p className="mb-2">Usuario Visitante: visitante@mail.com </p>
             <p className="mb-2"> Contraseña: pass1234 </p>
+            </div>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Button type="submit">Ingresar</Button>
             </Form.Group>

@@ -29,7 +29,7 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
       address: address,
       phoneNumber: phoneNumber,
       password: password,
-      role: role
+      role: role,
     };
     if (userSelected === null) {
       addUser(user);
@@ -50,88 +50,82 @@ const UsersForm = ({ addUser, userSelected, unselectUser, editUser }) => {
   };
 
   return (
-<>
-<div className="form" >
-   
-    <form onSubmit={submit}>
-    <div className="form-container">
-      <div className="input-form">
-        <label htmlFor="name">Name</label>
-        <input
-        style ={{width: '17vw'}}
-        className="input-f"
-          type="text"
-          id="name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-      </div>
-      <div className="input-form">
-        <label htmlFor="email">Email</label>
-        <br />
-        <input
-         style ={{width: '17vw'}}
-          type="email"
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </div>
+    <>
+      <div className="form">
+        <form onSubmit={submit}>
+          <div className="form-container">
+            <div className="input-form">
+              <label htmlFor="name">Name</label>
+              <input
+                className="input-f"
+                type="text"
+                id="name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+            </div>
+            <div className="input-form">
+              <label htmlFor="email">Email</label>
 
-      <div className="input-form">
-        <label htmlFor="address">Address</label>
-        <br />
-        <input
-         style ={{width: '17vw'}}
-          type="address"
-          id="address"
-          onChange={(e) => setAddress(e.target.value)}
-          value={address}
-        />
-      </div>
-      <div className="input-form">
-        
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <br />
-        <input
-         style ={{width: '17vw'}}
-          type="phoneNumber"
-          id="phoneNumber"
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          value={phoneNumber}
-        />
-      </div>
+              <input
+                type="email"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
 
-      <div className="input-form">
-        <label htmlFor="password">Password</label>
-        <input
-         style ={{width: '17vw'}}
-          type="password"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
+            <div className="input-form">
+              <label htmlFor="address">Address</label>
+
+              <input
+                type="address"
+                id="address"
+                onChange={(e) => setAddress(e.target.value)}
+                value={address}
+              />
+            </div>
+            <div className="input-form">
+              <label htmlFor="phoneNumber">Phone Number</label>
+
+              <input
+                type="phoneNumber"
+                id="phoneNumber"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                value={phoneNumber}
+              />
+            </div>
+
+            <div className="input-form">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+            <div className="input-form">
+              <label htmlFor="password">Role</label>
+              <input
+                type="role"
+                id="role"
+                onChange={(e) => setRole(e.target.value)}
+                value={role}
+              />
+            </div>
+          </div>
+          <div>
+            <button className="addButton">Add User</button>
+            {userSelected !== null && (
+              <button type="button" className="cancel" onClick={unselectUser}>
+                Cancelar
+              </button>
+            )}
+          </div>
+        </form>
       </div>
-      <div className="input-form">
-        <label htmlFor="password">Role</label>
-        <input
-         style ={{width: '17vw'}}
-          type="role"
-          id="role"
-          onChange={(e) => setRole(e.target.value)}
-          value={role}
-        />
-      </div>
-      </div>
-      <div>
-      <button className="addButton">Add User</button>
-      {userSelected !== null && (<button type="button" className="cancel" onClick={unselectUser}>Cancelar</button>)}
-     </div>
-    </form>
-    </div>
     </>
-
-
   );
 };
 
