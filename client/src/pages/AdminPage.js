@@ -28,7 +28,7 @@ function AdminPage() {
           <h1 className="landing-page-title-1">CRUD MERN</h1>
           <h2 className="landing-page-title">Bienvenido Administrador</h2>
           <h5 className="landing-page-title-1">
-            Aquí podras crear, ver, editar y borrar usuarios de la base de
+            Aquí podrás crear, ver, editar y borrar usuarios de la base de
             datos.
           </h5>
         </div>
