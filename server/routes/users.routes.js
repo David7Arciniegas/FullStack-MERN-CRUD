@@ -39,6 +39,6 @@ usersRouter
 	.route('/:id')
 	.get(getUserById)
 	.patch(updateUser)
-	.delete( deleteUser);
+	.delete(deleteUser);
 
 module.exports = { usersRouter };

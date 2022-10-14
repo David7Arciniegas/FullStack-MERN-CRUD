@@ -45,7 +45,7 @@ function Form() {
       .delete(`http://localhost:4000/api/v1/users/`, getConfig())
       .then(() => getUsers());*/
 
-    axios.delete(`${API_URL}`, getConfig())
+    axios.delete(`${API_URL}/`, getConfig())
     .then(() => getUsers());
     
   };
