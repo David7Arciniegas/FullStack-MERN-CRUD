@@ -1,12 +1,8 @@
-import '../styles/styles.css';
-import Image from '../assets/1.png';
-
-
+import "../styles/styles.css";
+import Image from "../assets/1.png";
 
 const LoadingScreen = () => {
-
-  const logout = () => localStorage.setItem("token", "")
-
+  const logout = () => localStorage.setItem("token", "");
 
   return (
     <div className="navbar-container">
@@ -20,7 +16,9 @@ const LoadingScreen = () => {
           </a>
         </li>
         <li>
-          <a className="logout" role="button"  onClick={logout} href="/#/login">Logout</a>
+          <a className="logout" role="button" onClick={logout} href="/#/login">
+            Logout
+          </a>
         </li>
       </ul>
     </div>

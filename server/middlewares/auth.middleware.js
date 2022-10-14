@@ -1,69 +1,69 @@
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 // Models
-const { User } = require('../models/user.model');
+const { User } = require("../models/user.model");
 
 // Utils
-const { catchAsync } = require('../utils/catchAsync.util');
-const { AppError } = require('../utils/appError.util');
+const { catchAsync } = require("../utils/catchAsync.util");
+const { AppError } = require("../utils/appError.util");
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: "./config.env" });
 
 const protectSession = catchAsync(async (req, res, next) => {
-	let token;
+  let token;
 
-	// Extract the token from headers
-	if (
-		req.headers.authorization &&
-		req.headers.authorization.startsWith('Bearer')
-	) {
-		token = req.headers.authorization.split(' ')[1];
-	}
+  // Extract the token from headers
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
 
-	if (!token) {
-		return next(new AppError('Invalid session', 403));
-	}
+  if (!token) {
+    return next(new AppError("Invalid session", 403));
+  }
 
-	// Ask JWT (library), if the token is still valid
-	const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-	// { id, ... }
+  // Ask JWT (library), if the token is still valid
+  const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+  // { id, ... }
 
-	// Check in db that user still exists
-	const user = await User.findOne({
-		_id: decoded.id,
-		status: 'active',
-	});
+  // Check in db that user still exists
+  const user = await User.findOne({
+    _id: decoded.id,
+    status: "active",
+  });
 
-	if (!user) {
-		return next(
-			new AppError('The owner of this token doesnt exist anymore', 403)
-		);
-	}
+  if (!user) {
+    return next(
+      new AppError("The owner of this token doesnt exist anymore", 403)
+    );
+  }
 
-	// Grant access
-	req.sessionUser = user;
-	next();
+  // Grant access
+  req.sessionUser = user;
+  next();
 });
 
 const protectUserAccount = (req, res, next) => {
-	// const { id } = req.params -> Alternative
-	const { sessionUser, user } = req;
+  // const { id } = req.params -> Alternative
+  const { sessionUser, user } = req;
 
-	// If the id's don't match, return error (403)
-	if (!sessionUser._id.equals(user._id)) {
-		return next(new AppError('You do not own this account', 403));
-	}
+  // If the id's don't match, return error (403)
+  if (!sessionUser._id.equals(user._id)) {
+    return next(new AppError("You do not own this account", 403));
+  }
 
-	next();
+  next();
 };
 
 const adminUserAccount = (req, res, next) => {
-	//Allows actions if user is Admin
-	const { sessionUser } = req;
+  //Allows actions if user is Admin
+  const { sessionUser } = req;
 
-	if(sessionUser.role != "admin"){
-		return next(new AppError('You are not an Admin', 403));
-	}
-}
+  if (sessionUser.role != "admin") {
+    return next(new AppError("You are not an Admin", 403));
+  }
+};
 module.exports = { protectSession, protectUserAccount, adminUserAccount };

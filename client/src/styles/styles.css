@@ -19,6 +19,20 @@
   text-align: center;
   
 }
+.admin-page-title{
+  text-align: center;
+}
+
+.landing-page-title{
+  color:#c9d1d0
+}
+.landing-page-title-1{
+  color:#dfeceb
+}
+.landing-page-title-2{
+  padding-top: 2rem;
+  color:#dfeceb
+}
 
 .navbar-container {
   display: flex;

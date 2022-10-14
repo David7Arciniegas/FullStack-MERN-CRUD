@@ -1,17 +1,14 @@
 import "../styles/styles.css";
-import React, { useEffect, useState } from "react";
-import Form from "../components/Form";
-import axios from "axios";
-import getConfig from "../utils/getConfig";
 
 function LandingPage() {
   return (
     <div>
       <div className="landing-page">
-        <h2>
-          Bienvenid@!, Puedes ingresar al portal usando tus credenciales de
-          Administrador, o visitante, en el boton de Login.{" "}
-        </h2>
+        <h2 className="landing-page-title-1">¡Bienvenid@! </h2>
+        <h5 className="landing-page-title-1">
+          Puedes ingresar al portal usando tus credenciales de Administrador, o
+          Visitante, en el boton de Login.{" "}
+        </h5>
       </div>
 
       <footer>

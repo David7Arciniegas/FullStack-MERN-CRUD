@@ -10,10 +10,11 @@ const Login = () => {
   const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
 
   const submit = (data) => {
-    /* axios
-     .post(`${API_URL}/login`, data)*/
     axios
-      .post(`http://localhost:4000/api/v1/users/login`, data)
+      .post(`${API_URL}/login`, data)
+      //When the API is called, it veryfies if the user in session is admin, if not, it redirects to login page.
+      /* axios
+      .post(`http://localhost:4000/api/v1/users/login`, data)*/
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.user.role);
@@ -67,10 +68,10 @@ const Login = () => {
               />
             </Form.Group>
             <div className="card">
-            <p className="mb-2">Usuario Administrador: admin@mail.com </p>
-            <p className="mb-2"> Contraseña: pass1234 </p>
-            <p className="mb-2">Usuario Visitante: visitante@mail.com </p>
-            <p className="mb-2"> Contraseña: pass1234 </p>
+              <p className="mb-2">Usuario Administrador: admin@mail.com </p>
+              <p className="mb-2"> Contraseña: pass1234 </p>
+              <p className="mb-2">Usuario Visitante: visitante@mail.com </p>
+              <p className="mb-2"> Contraseña: pass1234 </p>
             </div>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Button type="submit">Ingresar</Button>
