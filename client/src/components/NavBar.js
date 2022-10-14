@@ -15,12 +15,12 @@ const LoadingScreen = () => {
           <img className="logo" src={Image} alt="" />
         </li>
         <li>
-          <a className="ingresar" href="/#/login">
+          <a className="login" href="/#/login">
             Login
           </a>
         </li>
         <li>
-          <a className="salir" role="button"  onClick={logout} href="/#/login">Logout</a>
+          <a className="logout" role="button"  onClick={logout} href="/#/login">Logout</a>
         </li>
       </ul>
     </div>
